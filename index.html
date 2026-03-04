@@ -803,9 +803,9 @@ body.dark-theme .product-card::before {
 }
 
 .benefits {
-  background: linear-gradient(135deg, var(--primary) 0%, #0d1e12 100%);
+  background: var(--cream);
   padding: 120px 0;
-  color: white;
+  color: var(--text);
   position: relative;
   overflow: hidden;
 }
@@ -820,19 +820,19 @@ body.dark-theme .product-card::before {
   background:
     radial-gradient(
       ellipse at 20% 80%,
-      rgba(144, 157, 67, 0.15) 0%,
+      rgba(144, 157, 67, 0.05) 0%,
       transparent 50%
     ),
     radial-gradient(
       ellipse at 80% 20%,
-      rgba(212, 175, 55, 0.1) 0%,
+      rgba(212, 175, 55, 0.05) 0%,
       transparent 50%
     );
   pointer-events: none;
 }
 
 .benefits .section-title {
-  color: white;
+  color: var(--heading);
   margin-bottom: 60px;
 }
 
@@ -845,19 +845,17 @@ body.dark-theme .product-card::before {
 }
 
 .benefit-card {
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--card-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding: 40px 24px;
   border-radius: var(--radius-lg);
   text-align: center;
   transition: var(--transition);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   position: relative;
   overflow: hidden;
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.2),
-    inset 0 1px 2px rgba(255, 255, 255, 0.2);
+  box-shadow: var(--shadow-sm);
 }
 
 .benefit-card::before {
@@ -877,12 +875,10 @@ body.dark-theme .product-card::before {
 }
 
 .benefit-card:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--white);
   transform: translateY(-8px);
-  border-color: rgba(212, 175, 55, 0.4);
-  box-shadow:
-    0 12px 40px rgba(0, 0, 0, 0.3),
-    inset 0 1px 4px rgba(255, 255, 255, 0.3);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
 }
 
 .benefit-card:hover::before {
@@ -903,6 +899,7 @@ body.dark-theme .product-card::before {
   margin-bottom: 12px;
   position: relative;
   z-index: 1;
+  color: var(--heading);
 }
 
 .benefit-card p {
@@ -911,6 +908,49 @@ body.dark-theme .product-card::before {
   line-height: 1.7;
   position: relative;
   z-index: 1;
+  color: var(--text-muted);
+}
+
+/* Dark mode benefits */
+body.dark-theme .benefits {
+  background: linear-gradient(135deg, var(--primary) 0%, #0d1e12 100%);
+  color: white;
+}
+body.dark-theme .benefits::before {
+  background:
+    radial-gradient(
+      ellipse at 20% 80%,
+      rgba(144, 157, 67, 0.15) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 80% 20%,
+      rgba(212, 175, 55, 0.1) 0%,
+      transparent 50%
+    );
+}
+body.dark-theme .benefits .section-title {
+  color: white;
+}
+body.dark-theme .benefit-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+body.dark-theme .benefit-card h3 {
+  color: white;
+}
+body.dark-theme .benefit-card p {
+  color: rgba(255, 255, 255, 0.8);
+}
+body.dark-theme .benefit-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.3),
+    inset 0 1px 4px rgba(255, 255, 255, 0.3);
 }
 
 .faq {
@@ -2155,6 +2195,16 @@ body.catalog-active .whatsapp-button { display:none !important }
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   gap:7px;padding:14px;text-align:center;width:100%;transition:opacity .2s;
 }
+.prod-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: transform .3s ease;
+}
+.prod-img-wrap:hover .prod-image {
+  transform: scale(1.05);
+}
 .placeholder-icon { font-size:clamp(1.8rem,3.5vw,2.6rem);opacity:.55 }
 .placeholder-name {
   font-family:var(--font-serif);
@@ -2614,7 +2664,7 @@ body.catalog-active .whatsapp-button { display:none !important }
 <div class="page hidden" id="page-1">
   <div class="page-half page-left"><div class="product-slot" data-id="tupeli-250">
   <div class="prod-img-wrap" onclick="toggleDetail(this)">
-    <div class="prod-img-placeholder"><div class="placeholder-icon">🫒</div><div class="placeholder-name">Aceite Tupelí Extra Virgen x 250 ml</div></div>
+    <img src="tupeli-250.png" alt="Aceite Tupelí Extra Virgen x 250 ml" class="prod-image">
     <div class="prod-detail-panel"><ul class="detail-list"><li>Varietal 100% primera prensa en frío</li><li>Envase de vidrio oscuro con pico dosificador</li><li>Origen: Mendoza, Argentina</li><li>Perfil: frutado verde, amargo medio, picante ligero</li><li>Ideal para ensaladas, carnes y uso en crudo</li></ul><button class="detail-close" onclick="event.stopPropagation();toggleDetail(this.closest('.prod-img-wrap'))">✕ Cerrar</button></div>
     <div class="detail-hint">Tocá para ver características</div>
   </div>
@@ -2627,7 +2677,7 @@ body.catalog-active .whatsapp-button { display:none !important }
 </div></div>
   <div class="page-half page-right"><div class="product-slot" data-id="tupeli-500">
   <div class="prod-img-wrap" onclick="toggleDetail(this)">
-    <div class="prod-img-placeholder"><div class="placeholder-icon">🫒</div><div class="placeholder-name">Aceite Tupelí Extra Virgen x 500 ml</div></div>
+    <img src="tupeli-500.png" alt="Aceite Tupelí Extra Virgen x 500 ml" class="prod-image">
     <div class="prod-detail-panel"><ul class="detail-list"><li>Varietal 100% primera prensa en frío</li><li>Envase de vidrio oscuro con pico dosificador</li><li>Origen: Mendoza, Argentina</li><li>Presentación familiar de mayor rendimiento</li><li>Ideal para ensaladas, carnes y uso en crudo</li></ul><button class="detail-close" onclick="event.stopPropagation();toggleDetail(this.closest('.prod-img-wrap'))">✕ Cerrar</button></div>
     <div class="detail-hint">Tocá para ver características</div>
   </div>
@@ -2643,7 +2693,7 @@ body.catalog-active .whatsapp-button { display:none !important }
 <div class="page hidden" id="page-2">
   <div class="page-half page-left"><div class="product-slot" data-id="oliovita-med">
   <div class="prod-img-wrap" onclick="toggleDetail(this)">
-    <div class="prod-img-placeholder"><div class="placeholder-icon">🫒</div><div class="placeholder-name">Oliovita Mediterráneo Virgen Extra x 250 ml</div></div>
+    <img src="oliovita-mediterraneo.png" alt="Oliovita Mediterráneo Virgen Extra x 250 ml" class="prod-image">
     <div class="prod-detail-panel"><ul class="detail-list"><li>Blend de variedades mediterráneas seleccionadas</li><li>Envase PET liviano y práctico</li><li>Origen: Argentina</li><li>Perfil: suave, frutado maduro, levemente dulce</li><li>Versátil: apto para cocción y uso en crudo</li></ul><button class="detail-close" onclick="event.stopPropagation();toggleDetail(this.closest('.prod-img-wrap'))">✕ Cerrar</button></div>
     <div class="detail-hint">Tocá para ver características</div>
   </div>
@@ -2656,7 +2706,7 @@ body.catalog-active .whatsapp-button { display:none !important }
 </div></div>
   <div class="page-half page-right"><div class="product-slot" data-id="oliovita-clas">
   <div class="prod-img-wrap" onclick="toggleDetail(this)">
-    <div class="prod-img-placeholder"><div class="placeholder-icon">🫒</div><div class="placeholder-name">Oliovita Clásico Virgen Extra x 250 ml</div></div>
+    <img src="oliovita-clasico.png" alt="Oliovita Clásico Virgen Extra x 250 ml" class="prod-image">
     <div class="prod-detail-panel"><ul class="detail-list"><li>Blend clásico de olivas seleccionadas</li><li>Envase PET liviano y práctico</li><li>Origen: Argentina</li><li>Perfil: neutro, suave, muy versátil</li><li>Ideal para cocción cotidiana</li></ul><button class="detail-close" onclick="event.stopPropagation();toggleDetail(this.closest('.prod-img-wrap'))">✕ Cerrar</button></div>
     <div class="detail-hint">Tocá para ver características</div>
   </div>
@@ -2672,7 +2722,7 @@ body.catalog-active .whatsapp-button { display:none !important }
 <div class="page hidden" id="page-3">
   <div class="page-half page-left"><div class="product-slot" data-id="laur">
   <div class="prod-img-wrap" onclick="toggleDetail(this)">
-    <div class="prod-img-placeholder"><div class="placeholder-icon">🫒</div><div class="placeholder-name">Aceite Laur Virgen Extra x 250 ml</div></div>
+    <img src="laur.png" alt="Aceite Laur Virgen Extra x 250 ml" class="prod-image">
     <div class="prod-detail-panel"><ul class="detail-list"><li>Ganador de premios internacionales</li><li>Envase de vidrio con pico dosificador</li><li>Origen: La Rioja, Argentina</li><li>Perfil: frutado intenso, amargo y picante pronunciados</li><li>Para paladares exigentes y uso gourmet</li></ul><button class="detail-close" onclick="event.stopPropagation();toggleDetail(this.closest('.prod-img-wrap'))">✕ Cerrar</button></div>
     <div class="detail-hint">Tocá para ver características</div>
   </div>
@@ -2685,7 +2735,7 @@ body.catalog-active .whatsapp-button { display:none !important }
 </div></div>
   <div class="page-half page-right"><div class="product-slot" data-id="zuelo-orig">
   <div class="prod-img-wrap" onclick="toggleDetail(this)">
-    <div class="prod-img-placeholder"><div class="placeholder-icon">🫒</div><div class="placeholder-name">Aceite Zuelo Virgen Extra Original x 250 ml</div></div>
+    <img src="zuelo-original.png" alt="Aceite Zuelo Virgen Extra Original x 250 ml" class="prod-image">
     <div class="prod-detail-panel"><ul class="detail-list"><li>Producido por Familia Zuccardi</li><li>Envase de vidrio oscuro con pico dosificador</li><li>Origen: Mendoza, Argentina</li><li>Perfil: frutado fresco, herbáceo, amargo medio</li><li>Uso en crudo, carpaccios y pasta</li></ul><button class="detail-close" onclick="event.stopPropagation();toggleDetail(this.closest('.prod-img-wrap'))">✕ Cerrar</button></div>
     <div class="detail-hint">Tocá para ver características</div>
   </div>
@@ -2701,7 +2751,7 @@ body.catalog-active .whatsapp-button { display:none !important }
 <div class="page hidden" id="page-4">
   <div class="page-half page-left"><div class="product-slot" data-id="zuelo-500">
   <div class="prod-img-wrap" onclick="toggleDetail(this)">
-    <div class="prod-img-placeholder"><div class="placeholder-icon">🫒</div><div class="placeholder-name">Aceite Zuelo Virgen Extra Blend Original x 500 ml</div></div>
+    <img src="zuelo-500.png" alt="Aceite Zuelo Virgen Extra Blend Original x 500 ml" class="prod-image">
     <div class="prod-detail-panel"><ul class="detail-list"><li>Producido por Familia Zuccardi</li><li>Presentación 500 ml para uso intensivo</li><li>Envase de vidrio oscuro con pico dosificador</li><li>Perfil: frutado fresco, herbáceo, amargo medio</li><li>Ideal para hogares con alto consumo</li></ul><button class="detail-close" onclick="event.stopPropagation();toggleDetail(this.closest('.prod-img-wrap'))">✕ Cerrar</button></div>
     <div class="detail-hint">Tocá para ver características</div>
   </div>
@@ -2714,7 +2764,7 @@ body.catalog-active .whatsapp-button { display:none !important }
 </div></div>
   <div class="page-half page-right"><div class="product-slot" data-id="coratina">
   <div class="prod-img-wrap" onclick="toggleDetail(this)">
-    <div class="prod-img-placeholder"><div class="placeholder-icon">🫒</div><div class="placeholder-name">Familia Zuccardi Coratina x 250 ml</div></div>
+    <img src="coratina_final.png" alt="Familia Zuccardi Coratina x 250 ml" class="prod-image">
     <div class="prod-detail-panel"><ul class="detail-list"><li>Varietal 100% Coratina de origen italiano</li><li>Alto contenido de polifenoles antioxidantes</li><li>Excelente estabilidad oxidativa</li><li>Perfil: muy intenso, amargo pronunciado, picante fuerte</li><li>Para ensaladas verdes, bruschetta y carnes rojas</li></ul><button class="detail-close" onclick="event.stopPropagation();toggleDetail(this.closest('.prod-img-wrap'))">✕ Cerrar</button></div>
     <div class="detail-hint">Tocá para ver características</div>
   </div>
@@ -2730,7 +2780,7 @@ body.catalog-active .whatsapp-button { display:none !important }
 <div class="page hidden" id="page-5">
   <div class="page-half page-left"><div class="product-slot" data-id="genovesa">
   <div class="prod-img-wrap" onclick="toggleDetail(this)">
-    <div class="prod-img-placeholder"><div class="placeholder-icon">🫒</div><div class="placeholder-name">Familia Zuccardi Genovesa x 250 ml</div></div>
+    <img src="genovesa_final.png" alt="Familia Zuccardi Genovesa x 250 ml" class="prod-image">
     <div class="prod-detail-panel"><ul class="detail-list"><li>Varietal 100% Genovesa</li><li>Cosecha temprana para mayor frescura</li><li>Perfil: frutado de manzana verde, tomate y alcachofa</li><li>Amargo ligero, picante suave</li><li>Ideal para pescados, mariscos y vegetales</li></ul><button class="detail-close" onclick="event.stopPropagation();toggleDetail(this.closest('.prod-img-wrap'))">✕ Cerrar</button></div>
     <div class="detail-hint">Tocá para ver características</div>
   </div>
@@ -2743,7 +2793,7 @@ body.catalog-active .whatsapp-button { display:none !important }
 </div></div>
   <div class="page-half page-right"><div class="product-slot" data-id="picual">
   <div class="prod-img-wrap" onclick="toggleDetail(this)">
-    <div class="prod-img-placeholder"><div class="placeholder-icon">🫒</div><div class="placeholder-name">Familia Zuccardi Picual x 250 ml</div></div>
+    <img src="picual_final.png" alt="Familia Zuccardi Picual x 250 ml" class="prod-image">
     <div class="prod-detail-panel"><ul class="detail-list"><li>Varietal 100% Picual</li><li>Alta resistencia a la oxidación</li><li>Perfil: frutado de tomate y higuera, almendrado</li><li>Amargo y picante medios, muy equilibrado</li><li>Versátil: cocción, ensaladas y frituras</li></ul><button class="detail-close" onclick="event.stopPropagation();toggleDetail(this.closest('.prod-img-wrap'))">✕ Cerrar</button></div>
     <div class="detail-hint">Tocá para ver características</div>
   </div>
@@ -2759,7 +2809,7 @@ body.catalog-active .whatsapp-button { display:none !important }
 <div class="page hidden" id="page-6">
   <div class="page-half page-left"><div class="product-slot" data-id="hilal-pet">
   <div class="prod-img-wrap" onclick="toggleDetail(this)">
-    <div class="prod-img-placeholder"><div class="placeholder-icon">🫒</div><div class="placeholder-name">Hilal Virgen Extra Doña Sofía x 500 ml PET</div></div>
+    <img src="hilal.png" alt="Hilal Virgen Extra Doña Sofía x 500 ml PET" class="prod-image">
     <div class="prod-detail-panel"><ul class="detail-list"><li>Producción artesanal y agroecológica certificada</li><li>Primera presión en frío, sin aditivos</li><li>Envase PET de alta densidad (HDPE)</li><li>Origen: Córdoba, Argentina</li><li>Perfil: frutado verde intenso, notas herbáceas</li></ul><button class="detail-close" onclick="event.stopPropagation();toggleDetail(this.closest('.prod-img-wrap'))">✕ Cerrar</button></div>
     <div class="detail-hint">Tocá para ver características</div>
   </div>
@@ -2772,7 +2822,7 @@ body.catalog-active .whatsapp-button { display:none !important }
 </div></div>
   <div class="page-half page-right"><div class="product-slot" data-id="hilal-vidrio">
   <div class="prod-img-wrap" onclick="toggleDetail(this)">
-    <div class="prod-img-placeholder"><div class="placeholder-icon">🫒</div><div class="placeholder-name">Hilal Virgen Extra Doña Sofía x 500 ml Vidrio</div></div>
+    <img src="hilal-55-v.png" alt="Hilal Virgen Extra Doña Sofía x 500 ml Vidrio" class="prod-image">
     <div class="prod-detail-panel"><ul class="detail-list"><li>Producción artesanal y agroecológica certificada</li><li>Primera presión en frío, sin aditivos</li><li>Envase de vidrio oscuro con pico dosificador</li><li>Origen: Córdoba, Argentina</li><li>Presentación premium para regalo o uso gourmet</li></ul><button class="detail-close" onclick="event.stopPropagation();toggleDetail(this.closest('.prod-img-wrap'))">✕ Cerrar</button></div>
     <div class="detail-hint">Tocá para ver características</div>
   </div>
@@ -2788,7 +2838,7 @@ body.catalog-active .whatsapp-button { display:none !important }
 <div class="page hidden" id="page-7">
   <div class="page-half page-left"><div class="product-slot" data-id="aceto-oliovita">
   <div class="prod-img-wrap" onclick="toggleDetail(this)">
-    <div class="prod-img-placeholder"><div class="placeholder-icon">🫒</div><div class="placeholder-name">Aceto Balsámico Oliovita Reducción x 250 ml</div></div>
+    <img src="oliovita.png" alt="Aceto Balsámico Oliovita Reducción x 250 ml" class="prod-image">
     <div class="prod-detail-panel"><ul class="detail-list"><li>Reducción balsámica de mosto de uva</li><li>Textura densa y brillante</li><li>Sabor: dulce-ácido con notas de frutos rojos</li><li>Ideal para carnes, quesos, ensaladas y postres</li><li>Botella de vidrio con pico dosificador</li></ul><button class="detail-close" onclick="event.stopPropagation();toggleDetail(this.closest('.prod-img-wrap'))">✕ Cerrar</button></div>
     <div class="detail-hint">Tocá para ver características</div>
   </div>
@@ -2801,7 +2851,7 @@ body.catalog-active .whatsapp-button { display:none !important }
 </div></div>
   <div class="page-half page-right"><div class="product-slot" data-id="casalta">
   <div class="prod-img-wrap" onclick="toggleDetail(this)">
-    <div class="prod-img-placeholder"><div class="placeholder-icon">🫒</div><div class="placeholder-name">Aceto Balsámico Casalta x 250 ml</div></div>
+    <img src="casalta.png" alt="Aceto Balsámico Casalta x 250 ml" class="prod-image">
     <div class="prod-detail-panel"><ul class="detail-list"><li>Reducción artesanal de mosto de uva seleccionado</li><li>Textura untuosa y concentrada</li><li>Sabor: complejo, dulce con retrogusto ahumado</li><li>Versátil: maridaje con quesos, frutas y helados</li><li>Botella de vidrio con pico dosificador</li></ul><button class="detail-close" onclick="event.stopPropagation();toggleDetail(this.closest('.prod-img-wrap'))">✕ Cerrar</button></div>
     <div class="detail-hint">Tocá para ver características</div>
   </div>
