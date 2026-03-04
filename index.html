@@ -707,7 +707,9 @@ body.dark-theme .product-card::before {
 .product-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  padding: 15px;
+  background: linear-gradient(180deg, rgba(244,239,233,0.5), rgba(232,226,216,0.5));
   transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -766,6 +768,8 @@ body.dark-theme .product-card::before {
 
 .product-info {
   padding: 28px;
+  position: relative;
+  z-index: 3;
 }
 
 .product-info h3 {
@@ -1729,6 +1733,10 @@ body.dark-theme .conclusion-girasol h3 {
     inset 0 2px 4px rgba(255, 255, 255, 0.4);
 }
 
+.buy-wa-btn {
+  position: relative;
+  z-index: 3;
+}
 .buy-wa-btn:hover {
   background: linear-gradient(135deg, #20bd5a 0%, #075e54 100%);
   transform: translateY(-2px);
@@ -1790,7 +1798,7 @@ body.dark-theme .conclusion-girasol h3 {
 }
 
 .checkout-content h2 {
-  font-family: "Playfair Display", serif;
+  font-family: "Cormorant Garamond", serif;
   color: var(--primary);
   margin-bottom: 25px;
   font-size: 1.8rem;
@@ -1907,6 +1915,92 @@ body.dark-theme .conclusion-girasol h3 {
   font-size: 0.9rem;
 }
 
+
+/* ── Dark theme checkout modal ── */
+body.dark-theme .checkout-content {
+  background: rgba(20, 26, 21, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+body.dark-theme .checkout-content h2 {
+  color: var(--accent);
+}
+body.dark-theme .checkout-field label {
+  color: var(--primary);
+}
+body.dark-theme .checkout-field input,
+body.dark-theme .checkout-field select {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.12);
+  color: var(--text);
+}
+body.dark-theme .checkout-field input::placeholder {
+  color: rgba(255,255,255,0.35);
+}
+body.dark-theme .checkout-field input:focus,
+body.dark-theme .checkout-field select:focus {
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 3px rgba(139,154,70,0.2);
+}
+body.dark-theme .total-button {
+  background-color: #1a8a4a;
+  box-shadow: 0 4px 15px rgba(26,138,74,0.3);
+}
+body.dark-theme .confirm-button {
+  background-color: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+body.dark-theme .confirm-button:hover {
+  background-color: rgba(255,255,255,0.18);
+}
+body.dark-theme .total-highlight {
+  color: var(--accent);
+}
+body.dark-theme .payment-instructions {
+  background: rgba(255,255,255,0.04);
+}
+body.dark-theme .alias-card {
+  color: #5599ff;
+}
+body.dark-theme .wait-message {
+  color: #9dc5a3;
+  background: rgba(157,197,163,0.08);
+}
+
+/* ── Checkout modal responsive ── */
+@media (max-width: 600px) {
+  .checkout-content {
+    padding: 28px 20px;
+    max-width: 100%;
+    border-radius: var(--radius-md);
+  }
+  .checkout-content h2 {
+    font-size: 1.4rem;
+    margin-bottom: 18px;
+  }
+  .checkout-modal {
+    padding: 12px;
+  }
+  #checkoutQty {
+    width: 80px;
+  }
+  .total-button {
+    font-size: 1rem;
+    padding: 15px;
+  }
+  .confirm-button {
+    font-size: 0.9rem;
+    padding: 15px;
+  }
+  .alias-card {
+    font-size: 1.2rem;
+  }
+  .payment-instructions {
+    padding: 18px;
+  }
+}
+
 @keyframes modalFadeIn {
   from {
     opacity: 0;
@@ -1922,6 +2016,11 @@ body.dark-theme .conclusion-girasol h3 {
 /* ── Extra dark theme fixes ── */
 body.dark-theme .product-info h3 { color: var(--text); }
 body.dark-theme .product-price { color: #e8c96b; }
+
+body.dark-theme .product-img {
+  background: linear-gradient(180deg, rgba(30,42,33,0.5), rgba(27,36,29,0.5));
+}
+
 body.dark-theme .product-brief { color: var(--text-muted); }
 body.dark-theme .product-tag { color: #b5bc5e; }
 body.dark-theme .section-title { color: var(--text); }
@@ -1935,6 +2034,19 @@ body.dark-theme .faq-answer-content { color: var(--text-muted); }
 body.dark-theme .comparativa-table th { color: var(--text); }
 body.dark-theme .oliva-cell, body.dark-theme .girasol-cell,
 body.dark-theme .etapa-cell { color: var(--text-muted); }
+body.dark-theme .modal-content {
+  background: rgba(20,26,21,0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+body.dark-theme .modal-text h2 { color: var(--accent); }
+body.dark-theme .modal-description p { color: var(--text-muted); }
+body.dark-theme .modal-image {
+  background: linear-gradient(135deg, rgba(30,42,33,0.5), rgba(27,36,29,0.5));
+}
+body.dark-theme .checkout-close { color: var(--text-muted); }
+body.dark-theme .checkout-close:hover { color: var(--text); }
 </style>
 
 <!-- ════════════════════════════════════
@@ -2078,9 +2190,8 @@ body.catalog-active .whatsapp-button { display:none !important }
 }
 .book-scene.mobile-view { max-width:360px }
 .book-scene.mobile-view .page { grid-template-columns:1fr }
-.book-scene.mobile-view .page-half.page-right:not(.cover-right):not(.back-right):not(.filler) { display:none }
+.book-scene.mobile-view .page-half { border-right:none !important }
 .book-scene.mobile-view .book-spine { display:none }
-.book-scene.mobile-view .page-half.page-left { border-right:none }
 .book-shadow {
   position:absolute;bottom:-16px;left:10%;width:80%;height:22px;
   background:radial-gradient(ellipse,rgba(30,58,36,.28) 0%,transparent 70%);
@@ -2196,10 +2307,14 @@ body.catalog-active .whatsapp-button { display:none !important }
   gap:7px;padding:14px;text-align:center;width:100%;transition:opacity .2s;
 }
 .prod-image {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: contain;
   object-position: center;
+  padding: 15px;
   transition: transform .3s ease;
 }
 .prod-img-wrap:hover .prod-image {
@@ -2386,9 +2501,6 @@ body.catalog-active .whatsapp-button { display:none !important }
   #view-catalog { padding:14px 10px 28px }
   .book-scene { max-width:340px !important }
   .book { aspect-ratio:.75/1 !important }
-  .page { grid-template-columns:1fr !important }
-  .page-half.page-right:not(.cover-right):not(.back-right) { display:none !important }
-  .page-half.page-left { border-right:none !important }
   .book-spine { display:none !important }
   .view-toggle { display:none }
   .catalog-header { padding-top:16px }
@@ -2913,50 +3025,174 @@ function switchView(v) {
   document.body.classList.toggle('catalog-active', isCatalog);
   document.getElementById('vsBtnOriginal').classList.toggle('active', !isCatalog);
   document.getElementById('vsBtnCatalog').classList.toggle('active', isCatalog);
-  // hide INICIO btn when switching to original
   if (!isCatalog) document.getElementById('btnInicio').classList.remove('visible');
-  // reset catalog to page 0 when re-entering
   if (isCatalog && catCur !== 0) catFlip(0, 'prev');
-  // re-run scroll observers on original view
   if (!isCatalog) {
     document.querySelectorAll('.animate-on-scroll:not(.visible)').forEach(el => {
       observer.observe(el);
     });
   }
-  // auto-detect mobile view for catalog
   if (isCatalog && window.innerWidth <= 520) setCatView('mobile');
 }
 
-/* ─── Catalog flipbook ─── */
-const CAT_TOTAL = 9;
-const CAT_LABELS = ["Portada", "Aceite Tupelí Extra Virgen · Aceite Tupelí Extra Virgen", "Oliovita Mediterráneo Virgen Extra · Oliovita Clásico Virgen Extra", "Aceite Laur Virgen Extra · Aceite Zuelo Virgen Extra Original", "Aceite Zuelo Virgen Extra Blend Original · Familia Zuccardi Coratina", "Familia Zuccardi Genovesa · Familia Zuccardi Picual", "Hilal Virgen Extra Doña Sofía · Hilal Virgen Extra Doña Sofía", "Aceto Balsámico Oliovita Reducción · Aceto Balsámico Casalta", "Contraportada"];
+/* ═══════════════════════════════════════════════════
+   Catalog flipbook – dual-mode navigation
+   PC:     flips through full pages (2 products per spread)
+   MOBILE: flips through individual product slots (1 product at a time)
+   ═══════════════════════════════════════════════════ */
+
+const SPREAD_TOTAL = 9; // page-0 … page-8
+let catMobile = false;
 let catCur = 0, catBusy = false;
-const catPages = Array.from({length:CAT_TOTAL}, (_,i) => document.getElementById('page-'+i));
-const btnPrev = document.getElementById('btnPrev');
-const btnNext = document.getElementById('btnNext');
+
+const catPages = Array.from({length:SPREAD_TOTAL}, (_,i) => document.getElementById('page-'+i));
+const btnPrev  = document.getElementById('btnPrev');
+const btnNext  = document.getElementById('btnNext');
 const indicator = document.getElementById('pageIndicator');
-const scene = document.getElementById('bookScene');
+const scene    = document.getElementById('bookScene');
+
+/* ── Product names for individual slots, ordered as they appear in HTML ── */
+const PRODUCT_NAMES = [
+  "Aceite Tupelí Extra Virgen 250 ml",
+  "Aceite Tupelí Extra Virgen 500 ml",
+  "Oliovita Mediterráneo Virgen Extra",
+  "Oliovita Clásico Virgen Extra",
+  "Aceite Laur Virgen Extra",
+  "Aceite Zuelo Virgen Extra Original 250 ml",
+  "Aceite Zuelo Virgen Extra Blend 500 ml",
+  "Familia Zuccardi Coratina",
+  "Familia Zuccardi Genovesa",
+  "Familia Zuccardi Picual",
+  "Hilal Virgen Extra Doña Sofía PET",
+  "Hilal Virgen Extra Doña Sofía Vidrio",
+  "Aceto Balsámico Oliovita Reducción",
+  "Aceto Balsámico Casalta"
+];
+
+/* Spread labels for PC (2 products per page) */
+const SPREAD_LABELS = [
+  "Portada",
+  "Tupelí 250 ml · Tupelí 500 ml",
+  "Oliovita Mediterráneo · Oliovita Clásico",
+  "Laur · Zuelo Original 250 ml",
+  "Zuelo Blend 500 ml · Zuccardi Coratina",
+  "Zuccardi Genovesa · Zuccardi Picual",
+  "Hilal PET · Hilal Vidrio",
+  "Aceto Oliovita · Aceto Casalta",
+  "Contraportada"
+];
+
+/*
+  Mobile sequence: a flat list of "steps".
+  Each step = { spread: <page-N index>, side: 'left'|'right'|'both' }
+  - 'both' = portada/contraportada (show full page)
+  - 'left'/'right' = show only that product half
+*/
+const MOB_SEQ = [
+  { spread:0, side:'both' },   // Portada
+  { spread:1, side:'left'  },  // Tupelí 250
+  { spread:1, side:'right' },  // Tupelí 500
+  { spread:2, side:'left'  },  // Oliovita Med
+  { spread:2, side:'right' },  // Oliovita Clás
+  { spread:3, side:'left'  },  // Laur
+  { spread:3, side:'right' },  // Zuelo Orig 250
+  { spread:4, side:'left'  },  // Zuelo 500
+  { spread:4, side:'right' },  // Coratina
+  { spread:5, side:'left'  },  // Genovesa
+  { spread:5, side:'right' },  // Picual
+  { spread:6, side:'left'  },  // Hilal PET
+  { spread:6, side:'right' },  // Hilal Vidrio
+  { spread:7, side:'left'  },  // Aceto Oliovita
+  { spread:7, side:'right' },  // Aceto Casalta
+  { spread:8, side:'both' },   // Contraportada
+];
+
+function getTotal() { return catMobile ? MOB_SEQ.length : SPREAD_TOTAL; }
+
+function getLabel(idx) {
+  if (!catMobile) return SPREAD_LABELS[idx] || '';
+  const step = MOB_SEQ[idx];
+  if (step.side === 'both') return idx === 0 ? 'Portada' : 'Contraportada';
+  // product index: count product steps before this one
+  let pi = 0;
+  for (let i = 1; i < idx; i++) { if (MOB_SEQ[i].side !== 'both') pi++; }
+  return PRODUCT_NAMES[pi] || ('Producto ' + (pi+1));
+}
+
+/* Show/hide the correct page and half */
+function showStep(idx) {
+  // Hide all spreads
+  catPages.forEach(p => { p.classList.add('hidden'); p.style.zIndex = ''; });
+
+  if (!catMobile) {
+    // PC mode: show the full spread
+    catPages[idx].classList.remove('hidden');
+    // reset mobile half visibility
+    catPages[idx].querySelectorAll('.page-half').forEach(h => {
+      h.style.display = '';
+    });
+  } else {
+    // Mobile mode
+    const step = MOB_SEQ[idx];
+    const page = catPages[step.spread];
+    page.classList.remove('hidden');
+    const halves = page.querySelectorAll(':scope > .page-half');
+    if (step.side === 'both') {
+      halves.forEach(h => h.style.display = '');
+    } else {
+      halves.forEach(h => {
+        if (step.side === 'left')  h.style.display = h.classList.contains('page-left')  ? '' : 'none';
+        if (step.side === 'right') h.style.display = h.classList.contains('page-right') ? '' : 'none';
+      });
+    }
+  }
+}
 
 function catFlip(idx, dir) {
-  if (catBusy || idx === catCur) return;
+  const total = getTotal();
+  if (catBusy || idx === catCur || idx < 0 || idx >= total) return;
   catBusy = true;
+
   const outC = dir==='next' ? 'page-flip-out-left' : 'page-flip-out-right';
   const inC  = dir==='next' ? 'page-flip-in-right' : 'page-flip-in-left';
-  const out = catPages[catCur], inn = catPages[idx];
-  inn.classList.remove('hidden');
-  inn.style.zIndex = 1; out.style.zIndex = 2;
-  out.classList.add(outC); inn.classList.add(inC);
-  out.addEventListener('animationend', () => {
-    out.classList.remove(outC); out.classList.add('hidden'); out.style.zIndex = '';
-    inn.classList.remove(inC); inn.style.zIndex = '';
+
+  // Identify current visible spread
+  const curSpread = catMobile ? catPages[MOB_SEQ[catCur].spread] : catPages[catCur];
+  const newSpread = catMobile ? catPages[MOB_SEQ[idx].spread]    : catPages[idx];
+
+  const sameSpread = (curSpread === newSpread);
+
+  if (sameSpread) {
+    // Same underlying page, just swap halves
+    showStep(idx);
+    catCur = idx; catBusy = false; catUpdate();
+    return;
+  }
+
+  // Different spread → animate
+  showStep(idx); // make new spread visible first
+  newSpread.style.zIndex = 1;
+  curSpread.style.zIndex = 2;
+  curSpread.classList.remove('hidden');
+
+  curSpread.classList.add(outC);
+  newSpread.classList.add(inC);
+
+  curSpread.addEventListener('animationend', () => {
+    curSpread.classList.remove(outC);
+    curSpread.classList.add('hidden');
+    curSpread.style.zIndex = '';
+    newSpread.classList.remove(inC);
+    newSpread.style.zIndex = '';
     catCur = idx; catBusy = false; catUpdate();
   }, {once:true});
 }
 
 function catUpdate() {
+  const total = getTotal();
   btnPrev.disabled = catCur === 0;
-  btnNext.disabled = catCur === CAT_TOTAL - 1;
-  indicator.textContent = CAT_LABELS[catCur] || ('Página ' + (catCur+1));
+  btnNext.disabled = catCur === total - 1;
+  indicator.textContent = getLabel(catCur);
   const bi = document.getElementById('btnInicio');
   catCur === 0 ? bi.classList.remove('visible') : bi.classList.add('visible');
 }
@@ -2966,23 +3202,26 @@ function goHome() {
   catFlip(0, 'prev');
 }
 
-btnNext.addEventListener('click', () => { if (catCur < CAT_TOTAL-1) catFlip(catCur+1,'next'); });
-btnPrev.addEventListener('click', () => { if (catCur > 0) catFlip(catCur-1,'prev'); });
+function navNext() { const t = getTotal(); if (catCur < t-1) catFlip(catCur+1,'next'); }
+function navPrev() { if (catCur > 0) catFlip(catCur-1,'prev'); }
+
+btnNext.addEventListener('click', navNext);
+btnPrev.addEventListener('click', navPrev);
 
 document.addEventListener('keydown', e => {
   if (!document.body.classList.contains('catalog-active')) return;
-  if (e.key==='ArrowRight' && catCur < CAT_TOTAL-1) catFlip(catCur+1,'next');
-  if (e.key==='ArrowLeft'  && catCur > 0)           catFlip(catCur-1,'prev');
+  if (e.key==='ArrowRight') navNext();
+  if (e.key==='ArrowLeft')  navPrev();
 });
 
 // Touch swipe
 let tx = 0;
 scene.addEventListener('touchstart', e => { tx = e.changedTouches[0].clientX; }, {passive:true});
-scene.addEventListener('touchend',   e => {
+scene.addEventListener('touchend', e => {
   const dx = e.changedTouches[0].clientX - tx;
   if (Math.abs(dx) < 36) return;
-  if (dx < 0 && catCur < CAT_TOTAL-1) catFlip(catCur+1,'next');
-  if (dx > 0 && catCur > 0)           catFlip(catCur-1,'prev');
+  if (dx < 0) navNext();
+  if (dx > 0) navPrev();
 });
 
 // Click zones
@@ -2990,8 +3229,8 @@ document.getElementById('book').addEventListener('click', e => {
   if (e.target.closest('.wa-btn,.prod-img-wrap,.detail-close')) return;
   const rect = e.currentTarget.getBoundingClientRect();
   const x = e.clientX - rect.left;
-  if (x < rect.width*.22 && catCur > 0)           catFlip(catCur-1,'prev');
-  if (x > rect.width*.78 && catCur < CAT_TOTAL-1) catFlip(catCur+1,'next');
+  if (x < rect.width*.22) navPrev();
+  if (x > rect.width*.78) navNext();
 });
 
 // Detail panel toggle
@@ -3003,13 +3242,22 @@ function toggleDetail(wrap) {
 
 // Mobile/PC toggle for catalog
 function setCatView(v) {
-  const mobile = v==='mobile';
-  scene.classList.toggle('mobile-view', mobile);
-  document.getElementById('btnMobile').classList.toggle('active', mobile);
-  document.getElementById('btnPC').classList.toggle('active', !mobile);
+  const wasMobile = catMobile;
+  catMobile = (v === 'mobile');
+  scene.classList.toggle('mobile-view', catMobile);
+  document.getElementById('btnMobile').classList.toggle('active', catMobile);
+  document.getElementById('btnPC').classList.toggle('active', !catMobile);
   document.querySelectorAll('.prod-img-wrap.open').forEach(w => w.classList.remove('open'));
+
+  // Reset to page 0 when switching modes to avoid index mismatch
+  if (wasMobile !== catMobile) {
+    catCur = 0;
+    showStep(0);
+    catUpdate();
+  }
 }
 
+showStep(0);
 catUpdate();
 </script>
 
@@ -3356,11 +3604,19 @@ function updateTotalPrice() {
 
 function confirmPurchase() {
   const qty = parseInt(document.getElementById("checkoutQty").value) || 1;
-  const phone =
-    document.getElementById("checkoutPhone").value || "No especificado";
-  const name =
-    document.getElementById("checkoutName").value || "No especificado";
-  const day = document.getElementById("checkoutDay").value || "No especificado";
+  const phone = document.getElementById("checkoutPhone").value.trim();
+  const name = document.getElementById("checkoutName").value.trim();
+  const day = document.getElementById("checkoutDay").value;
+
+  if (!name || !phone || !day) {
+    const missing = [];
+    if (!name) missing.push("Nombre");
+    if (!phone) missing.push("Celular");
+    if (!day) missing.push("Día de entrega");
+    alert("Por favor completá: " + missing.join(", "));
+    return;
+  }
+
   const total = currentCheckoutProduct.price * qty;
 
   // Update UI to Step 2
@@ -3467,7 +3723,10 @@ activeModal?.addEventListener("click", (e) => {
   if (e.target === activeModal) closeModalFunction();
 });
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeModalFunction();
+  if (e.key === "Escape") {
+    closeModalFunction();
+    closeCheckoutModal();
+  }
 });
 
 const observer = new IntersectionObserver(
