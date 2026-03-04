@@ -630,6 +630,11 @@ body.dark-theme .moon-icon {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 32px;
+  justify-items: center;
+}
+.product-card {
+  width: 100%;
+  max-width: 420px;
 }
 
 .product-card {
@@ -644,6 +649,8 @@ body.dark-theme .moon-icon {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.4);
+  width: 100%;
+  max-width: 420px;
 }
 
 body.dark-theme .product-card {
@@ -1229,6 +1236,10 @@ footer p {
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
+    max-width: 100%;
+  }
+  .product-card {
+    max-width: 100%;
   }
 
   .benefits-grid {
@@ -1283,6 +1294,13 @@ footer p {
 
   .products-grid {
     grid-template-columns: 1fr;
+    max-width: 440px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+  .product-card {
+    max-width: 100%;
   }
 
   .benefits-grid {
@@ -1860,6 +1878,23 @@ body.dark-theme .conclusion-girasol h3 {
   }
 }
 
+
+/* ── Extra dark theme fixes ── */
+body.dark-theme .product-info h3 { color: var(--text); }
+body.dark-theme .product-price { color: #e8c96b; }
+body.dark-theme .product-brief { color: var(--text-muted); }
+body.dark-theme .product-tag { color: #b5bc5e; }
+body.dark-theme .section-title { color: var(--text); }
+body.dark-theme .section-subtitle { color: var(--text-muted); }
+body.dark-theme .about-text h2 { color: var(--text); }
+body.dark-theme .about-text p { color: var(--text-muted); }
+body.dark-theme .hero .subtitle { color: var(--text-muted); }
+body.dark-theme .hero .description { color: var(--text-muted); }
+body.dark-theme .faq-question h3 { color: var(--text); }
+body.dark-theme .faq-answer-content { color: var(--text-muted); }
+body.dark-theme .comparativa-table th { color: var(--text); }
+body.dark-theme .oliva-cell, body.dark-theme .girasol-cell,
+body.dark-theme .etapa-cell { color: var(--text-muted); }
 </style>
 
 <!-- ════════════════════════════════════
